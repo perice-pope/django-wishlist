@@ -1,27 +1,28 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="text-align: center">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <title>Wishlist</title>
 </head>
 
 <body>
 
-    <h1>Wishlist</h1>
+    <h1 class="w">Wishlist</h1>
     {% if wishes|length == 0 %}
-    <p>no wishes yet</p>
+    <p>No wishes yet! Wish for anything... </p>
     <ul>
         {% else %}
         {% for wish in wishes %}
         <li>
             {{ wish.description}} 
-            <a href="{% url 'delete' wish.id %}">X</a>
+            <a class="pure-button pure-button-primary" href="{% url 'delete' wish.id %}">X</a>
 
             {% endfor %}
             {% endif %}
@@ -29,7 +30,7 @@
         </ul>
         <br>
         <span>
-        <a href={% url 'add' %}> ADD WISH</a>
+        <a class="button-xlarge pure-button" href={% url 'add' %}> ADD WISH</a>
     </span>
 
 </body>
